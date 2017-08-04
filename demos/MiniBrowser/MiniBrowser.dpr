@@ -73,6 +73,7 @@ begin
   GlobalCEFApp.ResourcesDirPath := ExtractFilePath(Application.ExeName) + 'resources\';
   GlobalCEFApp.LocalesDirPath := ExtractFilePath(Application.ExeName) + 'resources\locales';
   GlobalCEFApp.AddCustomCommandLine('--user-agent', 'Mozilla/5.0 (Linux; Android 5.1; MX4 Build/LMY47I; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043409 Safari/537.36 MicroMessenger/6.5.10.1080 NetType/4G Language/zh_CN');
+  GlobalCEFApp.EnableHighDPISupport :=True;
 
   // Examples of command line switches.
   // **********************************
