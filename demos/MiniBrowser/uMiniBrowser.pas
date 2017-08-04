@@ -8,32 +8,32 @@
 // The original license of DCEF3 still applies to CEF4Delphi.
 //
 // For more information about CEF4Delphi visit :
-//         https://www.briskbard.com/index.php?lang=en&pageid=cef
+// https://www.briskbard.com/index.php?lang=en&pageid=cef
 //
-//        Copyright © 2017 Salvador Díaz Fau. All rights reserved.
+// Copyright ?2017 Salvador Díaz Fau. All rights reserved.
 //
 // ************************************************************************
 // ************ vvvv Original license and comments below vvvv *************
 // ************************************************************************
 (*
- *                       Delphi Chromium Embedded 3
- *
- * Usage allowed under the restrictions of the Lesser GNU General Public License
- * or alternatively the restrictions of the Mozilla Public License 1.1
- *
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
- * the specific language governing rights and limitations under the License.
- *
- * Unit owner : Henri Gourvest <hgourvest@gmail.com>
- * Web site   : http://www.progdigy.com
- * Repository : http://code.google.com/p/delphichromiumembedded/
- * Group      : http://groups.google.com/group/delphichromiumembedded
- *
- * Embarcadero Technologies, Inc is not permitted to use or redistribute
- * this source code without explicit permission.
- *
- *)
+  *                       Delphi Chromium Embedded 3
+  *
+  * Usage allowed under the restrictions of the Lesser GNU General Public License
+  * or alternatively the restrictions of the Mozilla Public License 1.1
+  *
+  * Software distributed under the License is distributed on an "AS IS" basis,
+  * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+  * the specific language governing rights and limitations under the License.
+  *
+  * Unit owner : Henri Gourvest <hgourvest@gmail.com>
+  * Web site   : http://www.progdigy.com
+  * Repository : http://code.google.com/p/delphichromiumembedded/
+  * Group      : http://groups.google.com/group/delphichromiumembedded
+  *
+  * Embarcadero Technologies, Inc is not permitted to use or redistribute
+  * this source code without explicit permission.
+  *
+*)
 
 unit uMiniBrowser;
 
@@ -42,28 +42,28 @@ unit uMiniBrowser;
 interface
 
 uses
-  {$IFDEF DELPHI16_UP}
+{$IFDEF DELPHI16_UP}
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, Vcl.Menus,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, System.Types, Vcl.ComCtrls, Vcl.ClipBrd,
-  {$ELSE}
+{$ELSE}
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Menus,
   Controls, Forms, Dialogs, StdCtrls, ExtCtrls, Types, ComCtrls, ClipBrd,
-  {$ENDIF}
+{$ENDIF}
   uCEFChromium, uCEFWindowParent, uCEFInterfaces, uCEFApplication, uCEFTypes, uCEFConstants;
 
 const
-  MINIBROWSER_CREATED       = WM_APP + $100;
-  MINIBROWSER_SHOWDEVTOOLS  = WM_APP + $101;
-  MINIBROWSER_HIDEDEVTOOLS  = WM_APP + $102;
-  MINIBROWSER_COPYHTML      = WM_APP + $103;
+  MINIBROWSER_CREATED = WM_APP + $100;
+  MINIBROWSER_SHOWDEVTOOLS = WM_APP + $101;
+  MINIBROWSER_HIDEDEVTOOLS = WM_APP + $102;
+  MINIBROWSER_COPYHTML = WM_APP + $103;
 
   MINIBROWSER_HOMEPAGE = 'https://www.google.com';
 
   MINIBROWSER_CONTEXTMENU_SHOWDEVTOOLS = MENU_ID_USER_FIRST + 1;
   MINIBROWSER_CONTEXTMENU_HIDEDEVTOOLS = MENU_ID_USER_FIRST + 2;
-  MINIBROWSER_CONTEXTMENU_SHOWJSALERT  = MENU_ID_USER_FIRST + 3;
-  MINIBROWSER_CONTEXTMENU_SETJSEVENT   = MENU_ID_USER_FIRST + 4;
-  MINIBROWSER_CONTEXTMENU_COPYHTML     = MENU_ID_USER_FIRST + 5;
+  MINIBROWSER_CONTEXTMENU_SHOWJSALERT = MENU_ID_USER_FIRST + 3;
+  MINIBROWSER_CONTEXTMENU_SETJSEVENT = MENU_ID_USER_FIRST + 4;
+  MINIBROWSER_CONTEXTMENU_COPYHTML = MENU_ID_USER_FIRST + 5;
 
 type
   TMiniBrowserFrm = class(TForm)
@@ -122,26 +122,27 @@ type
     procedure GoBtnClick(Sender: TObject);
 
   protected
-    procedure AddURL(const aURL : string);
+    procedure AddURL(const aURL: string);
 
-    procedure ShowDevTools(aPoint : TPoint); overload;
+    procedure ShowDevTools(aPoint: TPoint); overload;
     procedure ShowDevTools; overload;
     procedure HideDevTools;
 
-    procedure BrowserCreatedMsg(var aMessage : TMessage); message MINIBROWSER_CREATED;
-    procedure ShowDevToolsMsg(var aMessage : TMessage); message MINIBROWSER_SHOWDEVTOOLS;
-    procedure HideDevToolsMsg(var aMessage : TMessage); message MINIBROWSER_HIDEDEVTOOLS;
-    procedure CopyHTMLMsg(var aMessage : TMessage); message MINIBROWSER_COPYHTML;
+    procedure BrowserCreatedMsg(var aMessage: TMessage); message MINIBROWSER_CREATED;
+    procedure ShowDevToolsMsg(var aMessage: TMessage); message MINIBROWSER_SHOWDEVTOOLS;
+    procedure HideDevToolsMsg(var aMessage: TMessage); message MINIBROWSER_HIDEDEVTOOLS;
+    procedure CopyHTMLMsg(var aMessage: TMessage); message MINIBROWSER_COPYHTML;
   public
 
   end;
 
 var
-  MiniBrowserFrm : TMiniBrowserFrm;
+  MiniBrowserFrm: TMiniBrowserFrm;
 
 implementation
 
 {$R *.dfm}
+
 
 uses
   uPreferences;
@@ -184,12 +185,12 @@ procedure TMiniBrowserFrm.Chromium1BeforeContextMenu(Sender: TObject;
 begin
   model.AddSeparator;
   model.AddItem(MINIBROWSER_CONTEXTMENU_SHOWJSALERT, 'Show JS Alert');
-  model.AddItem(MINIBROWSER_CONTEXTMENU_SETJSEVENT,  'Set mouseover event');
-  model.AddItem(MINIBROWSER_CONTEXTMENU_COPYHTML,    'Copy HTML to clipboard');
+  model.AddItem(MINIBROWSER_CONTEXTMENU_SETJSEVENT, 'Set mouseover event');
+  model.AddItem(MINIBROWSER_CONTEXTMENU_COPYHTML, 'Copy HTML to clipboard');
 
   if DevTools.Visible then
     model.AddItem(MINIBROWSER_CONTEXTMENU_HIDEDEVTOOLS, 'Hide DevTools')
-   else
+  else
     model.AddItem(MINIBROWSER_CONTEXTMENU_SHOWDEVTOOLS, 'Show DevTools');
 end;
 
@@ -198,37 +199,37 @@ procedure TMiniBrowserFrm.Chromium1ContextMenuCommand(Sender: TObject;
   const params: ICefContextMenuParams; commandId: Integer;
   eventFlags: TCefEventFlags; out Result: Boolean);
 var
-  TempParam : WParam;
+  TempParam: WParam;
 begin
   Result := False;
 
   case commandId of
-    MINIBROWSER_CONTEXTMENU_HIDEDEVTOOLS :
+    MINIBROWSER_CONTEXTMENU_HIDEDEVTOOLS:
       PostMessage(Handle, MINIBROWSER_HIDEDEVTOOLS, 0, 0);
 
-    MINIBROWSER_CONTEXTMENU_SHOWDEVTOOLS :
+    MINIBROWSER_CONTEXTMENU_SHOWDEVTOOLS:
       begin
         TempParam := ((params.XCoord and $FFFF) shl 16) or (params.YCoord and $FFFF);
         PostMessage(Handle, MINIBROWSER_SHOWDEVTOOLS, TempParam, 0);
       end;
 
-    MINIBROWSER_CONTEXTMENU_SHOWJSALERT :
+    MINIBROWSER_CONTEXTMENU_SHOWJSALERT:
       if (browser <> nil) and (browser.MainFrame <> nil) then
         browser.MainFrame.ExecuteJavaScript('alert(''JavaScript execute works!'');', 'about:blank', 0);
 
-    MINIBROWSER_CONTEXTMENU_SETJSEVENT :
+    MINIBROWSER_CONTEXTMENU_SETJSEVENT:
       if (browser <> nil) and (browser.MainFrame <> nil) then
         browser.MainFrame.ExecuteJavaScript(
-          'document.body.addEventListener("mouseover", function(evt){'+
-            'function getpath(n){'+
-              'var ret = "<" + n.nodeName + ">";'+
-              'if (n.parentNode){return getpath(n.parentNode) + ret} else '+
-              'return ret'+
-            '};'+
-            'app.mouseover(getpath(evt.target))}'+
+          'document.body.addEventListener("mouseover", function(evt){' +
+          'function getpath(n){' +
+          'var ret = "<" + n.nodeName + ">";' +
+          'if (n.parentNode){return getpath(n.parentNode) + ret} else ' +
+          'return ret' +
+          '};' +
+          'app.mouseover(getpath(evt.target))}' +
           ')', 'about:blank', 0);
 
-    MINIBROWSER_CONTEXTMENU_COPYHTML :
+    MINIBROWSER_CONTEXTMENU_COPYHTML:
       PostMessage(Handle, MINIBROWSER_COPYHTML, 0, 0);
   end;
 end;
@@ -236,10 +237,10 @@ end;
 procedure TMiniBrowserFrm.Chromium1LoadingStateChange(Sender: TObject;
   const browser: ICefBrowser; isLoading, canGoBack, canGoForward: Boolean);
 begin
-  BackBtn.Enabled    := canGoBack;
+  BackBtn.Enabled := canGoBack;
   ForwardBtn.Enabled := canGoForward;
-  ReloadBtn.Enabled  := not(isLoading);
-  StopBtn.Enabled    := isLoading;
+  ReloadBtn.Enabled := not(isLoading);
+  StopBtn.Enabled := isLoading;
 end;
 
 procedure TMiniBrowserFrm.Chromium1ProcessMessageReceived(Sender: TObject;
@@ -247,11 +248,11 @@ procedure TMiniBrowserFrm.Chromium1ProcessMessageReceived(Sender: TObject;
   const message: ICefProcessMessage; out Result: Boolean);
 begin
   if (message <> nil) and (message.Name = 'mouseover') and (message.ArgumentList <> nil) then
-    begin
-      StatusBar1.Panels[0].Text := message.ArgumentList.GetString(0);
-      Result                    := True;
-    end
-   else
+  begin
+    StatusBar1.Panels[0].Text := message.ArgumentList.GetString(0);
+    Result := True;
+  end
+  else
     Result := False;
 end;
 
@@ -271,7 +272,7 @@ procedure TMiniBrowserFrm.Chromium1TitleChange(Sender: TObject;
 begin
   if (title <> '') then
     caption := 'MiniBrowser - ' + title
-   else
+  else
     caption := 'MiniBrowser';
 end;
 
@@ -280,30 +281,31 @@ begin
   Chromium1.CreateBrowser(CEFWindowParent1, '');
 end;
 
-procedure TMiniBrowserFrm.BrowserCreatedMsg(var aMessage : TMessage);
+procedure TMiniBrowserFrm.BrowserCreatedMsg(var aMessage: TMessage);
 begin
   NavControlPnl.Enabled := True;
   AddURL(MINIBROWSER_HOMEPAGE);
   Chromium1.LoadURL(MINIBROWSER_HOMEPAGE);
 end;
 
-procedure TMiniBrowserFrm.AddURL(const aURL : string);
+procedure TMiniBrowserFrm.AddURL(const aURL: string);
 begin
-  if (URLCbx.Items.IndexOf(aURL) < 0) then URLCbx.Items.Add(aURL);
+  if (URLCbx.Items.IndexOf(aURL) < 0) then
+    URLCbx.Items.Add(aURL);
 
   URLCbx.Text := aURL;
 end;
 
-procedure TMiniBrowserFrm.ShowDevToolsMsg(var aMessage : TMessage);
+procedure TMiniBrowserFrm.ShowDevToolsMsg(var aMessage: TMessage);
 var
-  TempPoint : TPoint;
+  TempPoint: TPoint;
 begin
-  TempPoint.x := (aMessage.wParam shr 16) and $FFFF;
-  TempPoint.y := aMessage.wParam and $FFFF;
+  TempPoint.x := (aMessage.WParam shr 16) and $FFFF;
+  TempPoint.y := aMessage.WParam and $FFFF;
   ShowDevTools(TempPoint);
 end;
 
-procedure TMiniBrowserFrm.HideDevToolsMsg(var aMessage : TMessage);
+procedure TMiniBrowserFrm.HideDevToolsMsg(var aMessage: TMessage);
 begin
   HideDevTools;
 end;
@@ -311,51 +313,51 @@ end;
 procedure TMiniBrowserFrm.PopupMenu1Popup(Sender: TObject);
 begin
   if DevTools.Visible then
-    DevTools1.Caption := 'Hide DevTools'
-   else
-    DevTools1.Caption := 'Show DevTools';
+    DevTools1.caption := 'Hide DevTools'
+  else
+    DevTools1.caption := 'Show DevTools';
 end;
 
 procedure TMiniBrowserFrm.Preferences1Click(Sender: TObject);
 begin
-  PreferencesFrm.ProxyTypeCbx.ItemIndex  := Chromium1.ProxyType;
-  PreferencesFrm.ProxyServerEdt.Text     := Chromium1.ProxyServer;
-  PreferencesFrm.ProxyPortEdt.Text       := inttostr(Chromium1.ProxyPort);
-  PreferencesFrm.ProxyUsernameEdt.Text   := Chromium1.ProxyUsername;
-  PreferencesFrm.ProxyPasswordEdt.Text   := Chromium1.ProxyPassword;
-  PreferencesFrm.ProxyScriptURLEdt.Text  := Chromium1.ProxyScriptURL;
+  PreferencesFrm.ProxyTypeCbx.ItemIndex := Chromium1.ProxyType;
+  PreferencesFrm.ProxyServerEdt.Text := Chromium1.ProxyServer;
+  PreferencesFrm.ProxyPortEdt.Text := inttostr(Chromium1.ProxyPort);
+  PreferencesFrm.ProxyUsernameEdt.Text := Chromium1.ProxyUsername;
+  PreferencesFrm.ProxyPasswordEdt.Text := Chromium1.ProxyPassword;
+  PreferencesFrm.ProxyScriptURLEdt.Text := Chromium1.ProxyScriptURL;
   PreferencesFrm.ProxyByPassListEdt.Text := Chromium1.ProxyByPassList;
-  PreferencesFrm.HeaderNameEdt.Text      := Chromium1.CustomHeaderName;
-  PreferencesFrm.HeaderValueEdt.Text     := Chromium1.CustomHeaderValue;
+  PreferencesFrm.HeaderNameEdt.Text := Chromium1.CustomHeaderName;
+  PreferencesFrm.HeaderValueEdt.Text := Chromium1.CustomHeaderValue;
 
   if (PreferencesFrm.ShowModal = mrOk) then
-    begin
-      Chromium1.ProxyType         := PreferencesFrm.ProxyTypeCbx.ItemIndex;
-      Chromium1.ProxyServer       := PreferencesFrm.ProxyServerEdt.Text;
-      Chromium1.ProxyPort         := strtoint(PreferencesFrm.ProxyPortEdt.Text);
-      Chromium1.ProxyUsername     := PreferencesFrm.ProxyUsernameEdt.Text;
-      Chromium1.ProxyPassword     := PreferencesFrm.ProxyPasswordEdt.Text;
-      Chromium1.ProxyScriptURL    := PreferencesFrm.ProxyScriptURLEdt.Text;
-      Chromium1.ProxyByPassList   := PreferencesFrm.ProxyByPassListEdt.Text;
-      Chromium1.CustomHeaderName  := PreferencesFrm.HeaderNameEdt.Text;
-      Chromium1.CustomHeaderValue := PreferencesFrm.HeaderValueEdt.Text;
+  begin
+    Chromium1.ProxyType := PreferencesFrm.ProxyTypeCbx.ItemIndex;
+    Chromium1.ProxyServer := PreferencesFrm.ProxyServerEdt.Text;
+    Chromium1.ProxyPort := strtoint(PreferencesFrm.ProxyPortEdt.Text);
+    Chromium1.ProxyUsername := PreferencesFrm.ProxyUsernameEdt.Text;
+    Chromium1.ProxyPassword := PreferencesFrm.ProxyPasswordEdt.Text;
+    Chromium1.ProxyScriptURL := PreferencesFrm.ProxyScriptURLEdt.Text;
+    Chromium1.ProxyByPassList := PreferencesFrm.ProxyByPassListEdt.Text;
+    Chromium1.CustomHeaderName := PreferencesFrm.HeaderNameEdt.Text;
+    Chromium1.CustomHeaderValue := PreferencesFrm.HeaderValueEdt.Text;
 
-      Chromium1.UpdatePreferences;
-    end;
+    Chromium1.UpdatePreferences;
+  end;
 end;
 
 procedure TMiniBrowserFrm.ConfigBtnClick(Sender: TObject);
 var
-  TempPoint : TPoint;
+  TempPoint: TPoint;
 begin
   TempPoint.x := ConfigBtn.left;
   TempPoint.y := ConfigBtn.top + ConfigBtn.Height;
-  TempPoint   := ConfigPnl.ClientToScreen(TempPoint);
+  TempPoint := ConfigPnl.ClientToScreen(TempPoint);
 
   PopupMenu1.Popup(TempPoint.x, TempPoint.y);
 end;
 
-procedure TMiniBrowserFrm.CopyHTMLMsg(var aMessage : TMessage);
+procedure TMiniBrowserFrm.CopyHTMLMsg(var aMessage: TMessage);
 begin
   Chromium1.RetrieveHTML;
 end;
@@ -364,24 +366,24 @@ procedure TMiniBrowserFrm.DevTools1Click(Sender: TObject);
 begin
   if DevTools.Visible then
     HideDevTools
-   else
+  else
     ShowDevTools;
 end;
 
-procedure TMiniBrowserFrm.ShowDevTools(aPoint : TPoint);
+procedure TMiniBrowserFrm.ShowDevTools(aPoint: TPoint);
 begin
   Splitter1.Visible := True;
-  DevTools.Visible  := True;
-  DevTools.Width    := Width div 4;
+  DevTools.Visible := True;
+  DevTools.Width := Width div 4;
   Chromium1.ShowDevTools(aPoint, DevTools);
 end;
 
 procedure TMiniBrowserFrm.ShowDevTools;
 var
-  TempPoint : TPoint;
+  TempPoint: TPoint;
 begin
-  TempPoint.x := low(integer);
-  TempPoint.y := low(integer);
+  TempPoint.x := low(Integer);
+  TempPoint.y := low(Integer);
   ShowDevTools(TempPoint);
 end;
 
@@ -389,8 +391,31 @@ procedure TMiniBrowserFrm.HideDevTools;
 begin
   Chromium1.CloseDevTools(DevTools);
   Splitter1.Visible := False;
-  DevTools.Visible  := False;
-  DevTools.Width    := 0;
+  DevTools.Visible := False;
+  DevTools.Width := 0;
 end;
+
+
+// uses iniFiles;
+//
+// procedure TInternalApp.OnBeforeCommandLineProcessing(const processType: ustring;
+// const commandLine: ICefCommandLine);
+// var
+// ini : TIniFile;
+// str_ip : string;
+// begin
+// ini := TIniFile.Create(StringReplace(ParamStr(0),'.exe','.ini',[]));
+// str_ip := ini.ReadString('default','Proxy','');
+// ini.Free;
+// commandLine.AppendSwitchWithValue('proxy-server',str_ip);
+// if Assigned(CefOnBeforeCommandLineProcessing) then
+// CefOnBeforeCommandLineProcessing(processType, commandLine);
+// end;
+//
+// [default]
+// Proxy=218.189.26.20:8080
+// Proxy1=218.207.212.79:80
+// Proxy2=120.203.159.18:8118
+//https://bitbucket.org/chromiumembedded/cef/issues/1992
 
 end.

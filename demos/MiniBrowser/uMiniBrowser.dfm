@@ -2,8 +2,8 @@ object MiniBrowserFrm: TMiniBrowserFrm
   Left = 0
   Top = 0
   Caption = 'MiniBrowser'
-  ClientHeight = 716
-  ClientWidth = 1089
+  ClientHeight = 658
+  ClientWidth = 824
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,26 +16,26 @@ object MiniBrowserFrm: TMiniBrowserFrm
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
-    Left = 1084
+    Left = 414
     Top = 41
     Width = 5
-    Height = 656
-    Align = alRight
+    Height = 598
     Visible = False
-    ExplicitLeft = 0
-    ExplicitTop = 657
-    ExplicitHeight = 909
+    ExplicitLeft = 403
+    ExplicitTop = 60
+    ExplicitHeight = 743
   end
   object NavControlPnl: TPanel
     Left = 0
     Top = 0
-    Width = 1089
+    Width = 824
     Height = 41
     Align = alTop
     BevelOuter = bvNone
     Enabled = False
     ShowCaption = False
     TabOrder = 0
+    ExplicitWidth = 1031
     object NavButtonPnl: TPanel
       Left = 0
       Top = 0
@@ -109,7 +109,7 @@ object MiniBrowserFrm: TMiniBrowserFrm
     object URLEditPnl: TPanel
       Left = 133
       Top = 0
-      Width = 883
+      Width = 618
       Height = 41
       Align = alClient
       BevelOuter = bvNone
@@ -117,34 +117,34 @@ object MiniBrowserFrm: TMiniBrowserFrm
       Padding.Bottom = 8
       ShowCaption = False
       TabOrder = 1
-      ExplicitWidth = 915
+      ExplicitWidth = 825
       object URLCbx: TComboBox
         Left = 0
         Top = 9
-        Width = 883
+        Width = 618
         Height = 21
         Align = alClient
         TabOrder = 0
-        Text = 'https://www.google.com'
         Items.Strings = (
           'https://www.google.com'
           'hello://world/'
           
             'https://www.whatismybrowser.com/detect/what-http-headers-is-my-b' +
             'rowser-sending'
-          'https://www.w3schools.com/js/tryit.asp?filename=tryjs_win_close')
-        ExplicitWidth = 915
+          'https://www.w3schools.com/js/tryit.asp?filename=tryjs_win_close'
+          'http://fhh.yeece55.com/list.php?uid=2437')
+        ExplicitWidth = 825
       end
     end
     object ConfigPnl: TPanel
-      Left = 1016
+      Left = 751
       Top = 0
       Width = 73
       Height = 41
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitLeft = 1015
+      ExplicitLeft = 958
       object ConfigBtn: TButton
         Left = 40
         Top = 8
@@ -180,32 +180,38 @@ object MiniBrowserFrm: TMiniBrowserFrm
   object CEFWindowParent1: TCEFWindowParent
     Left = 0
     Top = 41
-    Width = 1084
-    Height = 656
-    Align = alClient
+    Width = 414
+    Height = 598
+    Align = alLeft
     TabOrder = 1
-    ExplicitHeight = 621
+    ExplicitLeft = 56
+    ExplicitTop = 52
+    ExplicitHeight = 743
   end
   object DevTools: TCEFWindowParent
-    Left = 1089
+    Left = 419
     Top = 41
-    Width = 0
-    Height = 656
-    Align = alRight
+    Width = 405
+    Height = 598
+    Align = alClient
     TabOrder = 2
     Visible = False
-    ExplicitHeight = 621
+    ExplicitLeft = 710
+    ExplicitTop = 52
+    ExplicitWidth = 407
+    ExplicitHeight = 743
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 697
-    Width = 1089
+    Top = 639
+    Width = 824
     Height = 19
     Panels = <
       item
         Width = 50
       end>
-    ExplicitTop = 662
+    ExplicitTop = 784
+    ExplicitWidth = 1031
   end
   object Chromium1: TChromium
     OnTextResultAvailable = Chromium1TextResultAvailable
